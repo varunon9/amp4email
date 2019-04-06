@@ -25,6 +25,6 @@
   "homepage": "https://github.com/varunon9/amp4email#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "nodemailer": "^6.0.0"
+    "nodemailer": "6.1.0"
   }
 }

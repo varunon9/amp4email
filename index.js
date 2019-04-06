@@ -11,7 +11,17 @@ const sendPromotionalEmail = function(receiver) {
     to: [receiver], // list of receivers
     subject: 'SaathMeTravel: An open source social travelling app to match'
       + ' the travellers sharing a common journey.',
-    html: ''
+    text: 'This is a dynamic email but your email client does not support it',
+    html: `
+      <p>This is a dynamic email.</p>
+      <p>
+        To check dynamic content, whitelist my email in 
+        <b>
+          Gmail Settings > General > Dynamic email > Dynamic email development
+        </b>
+      </p>
+    `,
+    amp: ''
   };
 
   // read the dynamic-email html file
@@ -19,7 +29,7 @@ const sendPromotionalEmail = function(receiver) {
     if (error) {
       console.trace(error);
     } else {
-      params.html = data;
+      params.amp = data;
       mailer.sendEmail(gmailAccount, params, (error) => {
         console.error('Failed to send email');
         console.trace(error);

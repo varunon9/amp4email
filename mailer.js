@@ -39,6 +39,7 @@ module.exports = {
       subject: params.subject, // Subject line
       text: params.text, // plain text body
       html: params.html, // html body
+      amp: params.amp, // amp4email
       attachments: params.attachments
     };
 
