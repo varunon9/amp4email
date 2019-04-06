@@ -32,6 +32,7 @@ In layman's term this means that you can send interactive email with real-time d
 
 1. `yarn start`
 2. Enter receiver's email id (where you whitelisted your gmail id)
+3. If email is sent successfully, your destination email will receive an image carousel.
 
 ![Run app](./images/amp4email-run.png)
 
@@ -51,3 +52,8 @@ This was simple POC for dynamic email using [nodemailer](https://github.com/node
 ![Dynamic email development](./images/g-suite-enable-dynamic-email.gif)
 
 4. Once you test dynamic email, next step would be sending it to end users. For that you need to whitelist your domain to Google. You will have to send a real world dynamic email to `ampforemail.whitelisting@gmail.com` meeting all the guidelines. Refer: https://developers.google.com/gmail/ampemail/register
+
+
+#### Dynamic email received
+
+![Dynamic email received](./images/dynamic-email-demo.gif)
