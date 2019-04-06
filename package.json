@@ -1,0 +1,30 @@
+{
+  "name": "amp4email",
+  "version": "1.0.0",
+  "description": "How to send dynamic email to users: Everything you need to know",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varunon9/amp4email.git"
+  },
+  "keywords": [
+    "amp4email",
+    "dynamic-email",
+    "amp-gmail",
+    "amp"
+  ],
+  "author": "Varun Kumar <varunon9@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/varunon9/amp4email/issues"
+  },
+  "homepage": "https://github.com/varunon9/amp4email#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "nodemailer": "^6.0.0"
+  }
+}
