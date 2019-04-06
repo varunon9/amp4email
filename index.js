@@ -43,7 +43,7 @@ const sendPromotionalEmail = function(receiver) {
 const stdin = process.openStdin();
 
 console.log('Sending dynamic email using amp4email-');
-console.log('Enter receiver email');
+console.log("Enter receiver's email");
 stdin.addListener('data', function(data) {
   const receiverEmail = data.toString().trim();
   sendPromotionalEmail(receiverEmail);

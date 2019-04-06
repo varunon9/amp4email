@@ -5,6 +5,7 @@ Recently Google rolled out amp4email support in Gmail. This tutorial provides a 
 ### What is dynamic email?
 
 **Official documentation**: The AMPHTML Email format provides a subset of AMP components that you can use in email messages. Recipients of AMP emails can view and interact with the AMP components directly in the email.
+
 In layman's term this means that you can send interactive email with real-time dynamic content, e.g. you can make your users fill a form and save response right in their inbox without clicking on any link.
 
 ## Lets get started
@@ -17,7 +18,7 @@ In layman's term this means that you can send interactive email with real-time d
 
 ### Step 2: Configure sender details
 
-1. Edit your gmail accoint details in `config.js` file (create in step 1)
+1. Edit your gmail accoint details in `config.js` file (created in step 1)
 2. Make sure that you have enabled less secure settings to your gmail account details (you can disable it after testing)
 3. Visit https://myaccount.google.com/lesssecureapps?utm_source=google-account&utm_medium=web for enabling less secure apps settings
 
@@ -32,7 +33,7 @@ In layman's term this means that you can send interactive email with real-time d
 1. `yarn start`
 2. Enter receiver's email id (where you whitelisted your gmail id)
 
-![Run app]('./images/amp4email-run.png')
+![Run app](./images/amp4email-run.png)
 
 
 ## What's next?
@@ -47,6 +48,6 @@ This was simple POC for dynamic email using [nodemailer](https://github.com/node
 
 3. If you use free gmail accounts, you might have to wait for dynamic email settings to be available in your Gmail settings because Gmail is gradually rolling out this feature. If you organisation use G-Suite then your admin can enable these settings from `Apps > G Suite > Settings for Gmail > User Settings`
 
-![Dynamic email development]('./images/g-suite-enable-dynamic-email.gif')
+![Dynamic email development](./images/g-suite-enable-dynamic-email.gif)
 
 4. Once you test dynamic email, next step would be sending it to end users. For that you need to whitelist your domain to Google. You will have to send a real world dynamic email to `ampforemail.whitelisting@gmail.com` meeting all the guidelines. Refer: https://developers.google.com/gmail/ampemail/register
