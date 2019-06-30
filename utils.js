@@ -27,7 +27,7 @@ const sendPromotionalEmail = async function(receiver) {
     // read the dynamic-email html file
     params.amp = await new Promise((resolve, reject) => {
       // path relative to app.js
-      fs.readFile('./views/flowers.html', (error, data) => {
+      fs.readFile('./email-templates/flowers.html', (error, data) => {
         if (error) {
           reject(error);
         } else {

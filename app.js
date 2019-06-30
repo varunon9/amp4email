@@ -92,6 +92,13 @@ app.use('/flowers', function(req, res, next) {
 
 // this API will be used in amp email to fetch list of flowers
 app.get('/flowers', function(req, res) {
+  // in amp4email we must have https and complete url
+  let urlPrefix;
+  if (process.env.NODE_ENV === 'prod') {
+    urlPrefix = 'https://saathmetravel.com/amp4email/'
+  } else {
+    urlPrefix = '';
+  }
   res.json({
     success: true,
     data: [
@@ -99,25 +106,25 @@ app.get('/flowers', function(req, res) {
         name: 'Lily',
         stars: 5,
         price: 70,
-        url: 'images/lily.jpeg'
+        url: urlPrefix + 'images/lily.jpeg'
       },
       {
         name: 'Rose',
         stars: 3,
         price: 50,
-        url: 'images/rose.jpeg'
+        url: urlPrefix + 'images/rose.jpeg'
       },
       {
         name: 'Marigold',
         stars: 4,
         price: 80,
-        url: 'images/marigold.jpeg'
+        url: urlPrefix + 'images/marigold.jpeg'
       },
       {
         name: 'Jasmine',
         stars: 5,
         price: 100,
-        url: 'images/jasmine.jpeg'
+        url: urlPrefix + 'images/jasmine.jpeg'
       }
     ]
   });
@@ -126,7 +133,6 @@ app.get('/flowers', function(req, res) {
 // this API will be used in amp email to submit feedback for a flower type
 app.post('/flowers/feedback', function(req, res) {
   const feedback = req.body;
-  console.log(feedback);
   res.json({
     success: true,
     message: 'Thank you for your feedback.',
