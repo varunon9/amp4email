@@ -99,25 +99,25 @@ app.get('/flowers', function(req, res) {
         name: 'Lily',
         stars: 5,
         price: 70,
-        url: '/images/lily.jpeg'
+        url: 'images/lily.jpeg'
       },
       {
         name: 'Rose',
         stars: 3,
         price: 50,
-        url: '/images/rose.jpeg'
+        url: 'images/rose.jpeg'
       },
       {
         name: 'Marigold',
         stars: 4,
         price: 80,
-        url: '/images/marigold.jpeg'
+        url: 'images/marigold.jpeg'
       },
       {
         name: 'Jasmine',
         stars: 5,
         price: 100,
-        url: '/images/jasmine.jpeg'
+        url: 'images/jasmine.jpeg'
       }
     ]
   });
