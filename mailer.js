@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const fs = require('fs');
 
 module.exports = {
-  sendEmail: function(account, params, failureCallback, successCallback) {
+  sendEmail: async function(account, params) {
 
     // create reusable transporter object using the default SMTP transport
     let smtpTransport;
@@ -15,15 +15,19 @@ module.exports = {
         auth: {
           user: account.user, // generated ethereal user
           pass: account.password // generated ethereal password
-        }
+        },
+        logger: true, // log to console
+        debug: true // include SMTP traffic in the logs
       });
     } else {
       smtpTransport = nodemailer.createTransport({
-        service: 'Gmail', // sets automatically host, port and connection security settings
+        service: account.service, // sets automatically host, port and connection security settings
         auth: {
           user: account.user,
           pass: account.password
-        }
+        },
+        logger: true, // log to console
+        debug: true // include SMTP traffic in the logs
       });
     }
 
@@ -43,14 +47,14 @@ module.exports = {
       attachments: params.attachments
     };
 
-    // send mail with defined transport object
-    smtpTransport.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        failureCallback(error);
-      } else {
-        successCallback(info);
-      }
+    let info;
+
+    try {
+      info = smtpTransport.sendMail(mailOptions);
       smtpTransport.close(); // shut down the connection pool, no more messages.
-    });
+      return info;
+    } catch (error) {
+      throw error;
+    }
   }
 };

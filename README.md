@@ -31,10 +31,8 @@ In layman's term this means that you can send interactive email with real-time d
 ### Step4: Run the application
 
 1. `yarn start`
-2. Enter receiver's email id (where you whitelisted your gmail id)
-3. If email is sent successfully, your destination email will receive an image carousel.
-
-![Run app](./images/amp4email-run.png)
+2. Enter following url to browser `http://localhost:3500/send/?email=<your@email.com>`
+3. `your@email.com` should get one dynamic email
 
 
 ## What's next?
@@ -53,66 +51,3 @@ This was simple POC for dynamic email using [nodemailer](https://github.com/node
 
 4. Once you test dynamic email, next step would be sending it to end users. For that you need to whitelist your domain to Google. You will have to send a real world dynamic email to `ampforemail.whitelisting@gmail.com` meeting all the guidelines. Refer: https://developers.google.com/gmail/ampemail/register
 
-
-#### Sent amp4email document
-
-```
-<!doctype html>
-<html amp4email>
-  <head>
-    <meta charset="utf-8">
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
-    <style amp4email-boilerplate>body{visibility:hidden}</style>
-  </head>
-  <body>
-    <h3>Want to join fellow travellers on your next trip?</h3>
-    <h4>Introducing <a href="https://github.com/varunon9/SaathMeTravel/tree/master/app/release" target="_blank">SaathMeTravel</a></h4>
-    <amp-carousel width="900"
-      height="300"
-      layout="responsive"
-      type="slides"
-      autoplay
-      delay="2000">
-      <amp-img src="https://raw.githubusercontent.com/varunon9/SaathMeTravel/master/screenshots/saathmetravel_chat.png"
-        width="720"
-        height="1280"
-        layout="responsive"
-        alt="Chat Screen"></amp-img>
-      <amp-img src="https://raw.githubusercontent.com/varunon9/SaathMeTravel/master/screenshots/saathmetravel_map.png"
-        width="720"
-        height="1280"
-        layout="responsive"
-        alt="Map Screen"></amp-img>
-      <amp-img src="https://raw.githubusercontent.com/varunon9/SaathMeTravel/master/screenshots/saathmetravel_plan_journey.png"
-        width="720"
-        height="1280"
-        layout="responsive"
-        alt="Plan Journey"></amp-img>
-      <amp-img src="https://raw.githubusercontent.com/varunon9/SaathMeTravel/master/screenshots/saathmetravel_profile.png"
-        width="720"
-        height="1280"
-        layout="responsive"
-        alt="Profile"></amp-img>
-      <amp-img src="https://raw.githubusercontent.com/varunon9/SaathMeTravel/master/screenshots/saathmetravel_route.png"
-        width="720"
-        height="1280"
-        layout="responsive"
-        alt="Route"></amp-img>
-      <amp-img src="https://raw.githubusercontent.com/varunon9/SaathMeTravel/master/screenshots/saathmetravel_review.png"
-        width="720"
-        height="1280"
-        layout="responsive"
-        alt="Reviews"></amp-img>
-    </amp-carousel>
-    <p>Star our open source poject on Github: 
-      <a href="https://github.com/varunon9/SaathMeTravel">SaathMeTravel</a>
-    </p>
-  </body>
-</html>
-```
-
-
-#### Dynamic email received
-
-![Dynamic email received](./images/dynamic-email-demo.gif)

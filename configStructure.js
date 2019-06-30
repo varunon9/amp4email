@@ -5,6 +5,8 @@
 module.exports = {
   gmailAccount: {
     user: 'your@email',
-    password: 'your-password'
-  }
+    password: 'your-password',
+    service: 'Gmail'
+  },
+  port: 3500
 }

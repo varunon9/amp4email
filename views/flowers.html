@@ -1,0 +1,257 @@
+<!--
+  Validate it here: https://amp.gmail.dev/playground/ and https://playground.amp.dev/
+-->
+<!doctype html>
+<html ⚡>
+  <head>
+    <meta charset="utf-8">
+    <link rel="canonical" href="self.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+    <noscript>
+      <style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>
+    </noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js">
+    </script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js">
+    </script> 
+    <style amp-custom>
+      body {
+        padding: 16px;
+        padding-top: 8px;
+      }
+      form.amp-form-submit-success > div.section {
+        display: none
+      }
+      .feedback-form {
+        box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 3px rgba(0,0,0,0.24);
+        padding: 10px;
+        border-radius: 3px;
+        margin: 50px auto auto;
+        width: 60%;
+      }
+      p > label {
+        color: #67b36d
+      }
+      p.question {
+        color: #216bc9;
+      }
+      #rating {
+        width: 100px;
+      }
+      .success {
+        color: green;
+      }
+      .error {
+        color: red;
+      }
+      .amp-list {
+        margin-top: 80px;
+      }
+      .product {
+        float: left;
+        margin: 16px;
+        box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 3px rgba(0,0,0,0.24);
+        padding: 16px;
+      }
+      .heading {
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .sub-heading {
+        font-weight: bold;
+      }
+      .button {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .button-secondary {
+        color: #fff;
+        background-color: #f0ad4e;
+        border-color: #eea236;
+      }
+      .button-primary {
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <amp-layout layout="responsive" width="1" height="1">
+        <h1>
+          Our top rated flowers in 2019
+        </h1>
+        <section [hidden]="currentPage > 0">
+          <amp-list
+            id="amp-list-placeholder"
+            items="data"            
+            src="/flowers"
+            binding="no"
+            class="amp-list"
+            layout="fill"
+          >
+            <div placeholder>Loading ...</div>
+            <div class="error" fallback>Failed to load data.</div>
+            <template type="amp-mustache">
+              <div 
+                class="product" 
+                on="tap:AMP.setState({ currentPage: 1, flowerName: '{{name}}', flowerUrl: '{{url}}' })"
+              >
+                <div>
+                  <amp-img
+                    width="225"
+                    height="225"
+                    layout="fixed"
+                    alt="{{name}}"
+                    src="{{url}}"
+                  />
+                </div>
+                <div>
+                  <p class="heading">{{name}}</p>
+                  <p class="sub-heading">{{stars}} stars | Rs {{price}}</p>
+                </div>
+              </div>
+            </template>
+          </amp-list>
+        </section>
+        <section hidden
+          [hidden]="currentPage != 1">
+            <button on="tap:AMP.setState({ currentPage: 0 })" class="button button-secondary">
+            < Back
+          </button>
+          <form class="feedback-form"
+            method="post"
+            custom-validation-reporting="show-all-on-submit"
+            action-xhr="/flowers/feedback">
+            <div class="section">
+              <div style="text-align: center;">
+                <div>
+                  <amp-img
+                    width="225"
+                    height="225"
+                    layout="fixed"
+                    [alt]="flowerName"
+                    [src]="flowerUrl"
+                  />
+                </div>
+                <div>
+                  <p class="heading" [text]="flowerName" />
+                </div>
+              </div>
+              <p class="question">
+                1. Please rate this flower out of 5.
+              </p>
+              <div>
+                <p>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value="1"
+                    >
+                  <label>1</label>
+                </p>
+                <p>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value="2"
+                    >
+                  <label>2</label>
+                </p>
+                <p>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value="3"
+                    >
+                  <label>3</label>
+                </p>
+                <p>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value="4"
+                    >
+                  <label>4</label>
+                </p>
+                <p>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value="5"
+                    checked
+                    >
+                  <label>5</label>
+                </p>
+              </div>
+            </div>
+            <div class="section">
+              <p class="question">
+                2. Any comment/suggestion?
+              </p>
+              <div>
+                <p>
+                  <textarea name="comment">
+                  </textarea>
+                </p>
+              </div>
+            </div>
+            <div class="section">
+              <p>
+                <input
+                  type="submit"
+                  class="button button-primary"
+                  value="Submit">
+              </p>
+            </div>
+            <div submitting class="success">
+              Collecting your feedback...
+            </div>
+            <div submit-success class="success">
+              <template type="amp-mustache">
+                <p>
+                  Thanks for taking out your time.
+                  We have collected your feedback successfully.
+                </p>
+                <p>
+                  Your rating: {{feedback.rating}}/5
+                </p>
+                <p>
+                  Your commnet: {{feedback.comment}}
+                </p>
+              </template>
+            </div>
+            <div submit-error class="error">
+              <template type="amp-mustache">
+                Some error occured. It's not you, it's us. Please try after some time.
+              </template>
+            </div>
+          </form>
+        </section>
+      </amp-layout>
+    </div>
+  </body>
+</html>
