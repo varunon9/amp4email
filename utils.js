@@ -1,23 +1,21 @@
 const fs = require('fs');
 
-const config = require('./config');
+const config = require('./config')[process.env.NODE_ENV || 'dev'];
 const mailer = require('./mailer');
 
 const sendPromotionalEmail = async function(receiver) {
   // edit config.js for your gmail credentials
   const gmailAccount = config.gmailAccount;
+  const url = config.url;
 
   const params = {
     to: [receiver], // list of receivers
     subject: 'Feedback | Beautiful Flowers Shop',
-    text: 'This is a dynamic email but your email client does not support it',
+    text: `Please visit ${url} to rate our flowers.`,
     html: `
-      <p>This is a dynamic email for rating our flowers.</p>
+      <p>Please rate our flowers</p>
       <p>
-        To check dynamic content, whitelist my email in 
-        <b>
-          Gmail Settings > General > Dynamic email > Dynamic email development
-        </b>
+        Please click this link <a href="${url}">${url}</a>
       </p>
     `,
     amp: ''

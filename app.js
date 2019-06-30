@@ -5,7 +5,7 @@ const multer = require('multer');
 const upload = multer();
 const app = express();
 
-const config = require('./config');
+const config = require('./config')[process.env.NODE_ENV || 'dev'];
 const utils = require('./utils');
 
 // setting view engine as ejs with file extension .html
@@ -92,13 +92,7 @@ app.use('/flowers', function(req, res, next) {
 
 // this API will be used in amp email to fetch list of flowers
 app.get('/flowers', function(req, res) {
-  // in amp4email we must have https and complete url
-  let urlPrefix;
-  if (process.env.NODE_ENV === 'prod') {
-    urlPrefix = 'https://saathmetravel.com/amp4email/'
-  } else {
-    urlPrefix = '';
-  }
+  
   res.json({
     success: true,
     data: [
@@ -106,25 +100,25 @@ app.get('/flowers', function(req, res) {
         name: 'Lily',
         stars: 5,
         price: 70,
-        url: urlPrefix + 'images/lily.jpeg'
+        url: config.url + 'images/lily.jpeg'
       },
       {
         name: 'Rose',
         stars: 3,
         price: 50,
-        url: urlPrefix + 'images/rose.jpeg'
+        url: config.url + 'images/rose.jpeg'
       },
       {
         name: 'Marigold',
         stars: 4,
         price: 80,
-        url: urlPrefix + 'images/marigold.jpeg'
+        url: config.url + 'images/marigold.jpeg'
       },
       {
         name: 'Jasmine',
         stars: 5,
         price: 100,
-        url: urlPrefix + 'images/jasmine.jpeg'
+        url: config.url + 'images/jasmine.jpeg'
       }
     ]
   });

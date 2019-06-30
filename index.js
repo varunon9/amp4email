@@ -1,7 +1,7 @@
 const http = require('http');
 
 const app = require('./app');
-const config = require('./config');
+const config = require('./config')[process.env.NODE_ENV || 'dev'];
 
 const port = config.port || 3500;
 /**

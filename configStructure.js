@@ -3,10 +3,22 @@
 // Link- https://myaccount.google.com/lesssecureapps?utm_source=google-account&utm_medium=web
 
 module.exports = {
-  gmailAccount: {
-    user: 'your@email',
-    password: 'your-password',
-    service: 'Gmail'
+  prod: {
+    gmailAccount: {
+      user: 'your@email',
+      password: 'your-password',
+      service: 'Gmail'
+    },
+    port: 3600,
+    url: 'http://localhost:3600/'
   },
-  port: 3500
+  dev: {
+    gmailAccount: {
+      user: 'your@email',
+      password: 'your-password',
+      service: 'Gmail'
+    },
+    port: 3600,
+    url: 'http://localhost:3600/'
+  }
 }
