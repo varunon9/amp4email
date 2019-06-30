@@ -35,6 +35,16 @@ In layman's term this means that you can send interactive email with real-time d
 3. `your@email.com` should get one dynamic email
 
 
+### Complete Youtube demo
+
+Please visit https://youtu.be/1SMjRAOlLl4
+
+
+### Dynamic email received
+
+![Dynamic email received](./images/dynamic-email-demo.gif)
+
+
 ## What's next?
 
 This was simple POC for dynamic email using [nodemailer](https://github.com/nodemailer/nodemailer) v6.1.0. In your production environment you might want to perform these steps-
@@ -50,4 +60,3 @@ This was simple POC for dynamic email using [nodemailer](https://github.com/node
 ![Dynamic email development](./images/g-suite-enable-dynamic-email.gif)
 
 4. Once you test dynamic email, next step would be sending it to end users. For that you need to whitelist your domain to Google. You will have to send a real world dynamic email to `ampforemail.whitelisting@gmail.com` meeting all the guidelines. Refer: https://developers.google.com/gmail/ampemail/register
-
